@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Santino & Roxanne</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff7fa;
+            color: #4a2635;
+        }
+
+        /* NAVIGATION */
+        nav {
+            background-color: #f8c4d6;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 3px 12px rgba(100, 50, 70, 0.15);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            color: #7d3b56;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #7d3b56;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #b85b7d;
+        }
+
+        /* SECTIONS */
+        .page {
+            min-height: 90vh;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .page.active {
+            display: flex;
+        }
+
+        .content {
+            max-width: 900px;
+            width: 100%;
+        }
+
+        /* HOME */
+        #home {
+            background: linear-gradient(
+                135deg,
+                #fff7fa,
+                #ffe0ea
+            );
+        }
+
+        .heart {
+            font-size: 60px;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: 55px;
+            color: #9b4968;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            color: #a85b78;
+            margin-bottom: 20px;
+        }
+
+        .intro {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        /* BUTTON */
+        .button {
+            display: inline-block;
+            border: none;
+            background-color: #e99ab7;
+            color: white;
+            padding: 14px 32px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            background-color: #c96f91;
+            transform: translateY(-3px);
+        }
+
+        /* PICTURE PAGE */
+        #pictures {
+            background-color: #ffe8f0;
+        }
+
+        .picture-title {
+            font-size: 35px;
+            color: #9b4968;
+            margin-bottom: 25px;
+        }
+
+        /* COUPLE PICTURE */
+        .couple-picture {
+            width: 420px;
+            height: 420px;
+            object-fit: cover;
+            border-radius: 25px;
+            border: 8px solid #f8c4d6;
+            box-shadow: 0 10px 25px rgba(100, 50, 70, 0.2);
+            margin-bottom: 25px;
+        }
+
+        .picture-text {
+            font-size: 18px;
+            margin-bottom: 25px;
+        }
+
+        /* OUR INDIVIDUAL PICTURES */
+        .people {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .person {
+            text-align: center;
+        }
+
+        .person img {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 6px solid #f8c4d6;
+            box-shadow: 0 8px 20px rgba(100, 50, 70, 0.2);
+        }
+
+        .person h3 {
+            margin-top: 10px;
+            color: #8f4663;
+        }
+
+        .heart-between {
+            font-size: 40px;
+        }
+
+        /* ABOUT */
+        #about {
+            background-color: #fff7fa;
+        }
+
+        .about-box {
+            max-width: 700px;
+            margin: auto;
+            background-color: #ffe1eb;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(100, 50, 70, 0.12);
+        }
+
+        .about-box h2 {
+            color: #9b4968;
+        }
+
+        .about-box p {
+            font-size: 17px;
+            line-height: 1.8;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: #f8c4d6;
+            color: #6e344c;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* MOBILE */
+        @media (max-width: 600px) {
+
+            nav {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            nav ul {
+                gap: 15px;
+            }
+
+            h1 {
+                font-size: 38px;
+            }
+
+            h2 {
+                font-size: 22px;
+            }
+
+            .couple-picture {
+                width: 280px;
+                height: 280px;
+            }
+
+            .people {
+                gap: 10px;
+            }
+
+            .person img {
+                width: 120px;
+                height: 120px;
+            }
+
+            .heart-between {
+                font-size: 25px;
+            }
+
+            .about-box {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <nav>
+
+        <div class="logo">
+            Santino ❤️ Roxanne
+        </div>
+
+        <ul>
+            <li>
+                <a href="#" onclick="showPage('home')">
+                    Home
+                </a>
+            </li>
+
+            <li>
+                <a href="#" onclick="showPage('pictures')">
+                    Pictures
+                </a>
+            </li>
+
+            <li>
+                <a href="#" onclick="showPage('about')">
+                    About Us
+                </a>
+            </li>
+        </ul>
+
+    </nav>
+
+
+    <!-- HOME PAGE -->
+    <section id="home" class="page active">
+
+        <div class="content">
+
+            <div class="heart">
+                ❤️
+            </div>
+
+            <h1>
+                Santino & Roxanne
+            </h1>
+
+            <h2>
+                Two Hearts, One Story
+            </h2>
+
+            <p class="intro">
+                Welcome to our little corner of the internet.
+                This website is about us and the memories we share.
+            </p>
+
+            <button class="button" onclick="showPage('pictures')">
+                Next →
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- PICTURES PAGE -->
+    <section id="pictures" class="page">
+
+        <div class="content">
+
+            <h2 class="picture-title">
+                Our Special Picture ❤️
+            </h2>
+
+            <!-- PUT YOUR COUPLE PICTURE HERE -->
+            <img
+                src="couple.jpg.jpeg"
+                alt="Santino and Roxanne together"
+                class="couple-picture"
+            >
+
+            <p class="picture-text">
+                A special moment that we can always remember.
+            </p>
+
+            <div class="people">
+
+                <div class="person">
+
+                    <img
+                        src="tino.jpg"
+                        alt="Santino"
+                    >
+
+                    <h3>
+                        Santino
+                    </h3>
+
+                </div>
+
+                <div class="heart-between">
+                    ❤️
+                </div>
+
+                <div class="person">
+
+                    <img
+                        src="roxanne2.jpg"
+                        alt="Roxanne"
+                    >
+
+                    <h3>
+                        Roxanne
+                    </h3>
+
+                </div>
+
+            </div>
+
+            <button class="button" onclick="showPage('home')">
+                ← Back
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT PAGE -->
+    <section id="about" class="page">
+
+        <div class="content">
+
+            <div class="about-box">
+
+                <h2>
+                    About Us ❤️
+                </h2>
+
+                <p>
+                    We are Santino and Roxanne.
+                    This website is a simple place where we can
+                    keep our pictures, memories, and special moments
+                    together.
+                </p>
+
+                <br>
+
+                <button class="button" onclick="showPage('home')">
+                    ← Back Home
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <p>
+            Made with ❤️ by Santino
+        </p>
+
+        <p>
+            Santino & Roxanne © 2026
+        </p>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+    <script>
+
+        function showPage(pageName) {
+
+            const pages = document.querySelectorAll(".page");
+
+            pages.forEach(function(page) {
+                page.classList.remove("active");
+            });
+
+            document.getElementById(pageName).classList.add("active");
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        }
+
+    </script>
+
+</body>
+</html>
